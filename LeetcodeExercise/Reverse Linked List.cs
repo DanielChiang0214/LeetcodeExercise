@@ -27,24 +27,22 @@ namespace LeetcodeExercise
 
         public ListNode ReverseList_v2(ListNode head)
         {
-            var (newHead, current) = ReverseList_2(head);
+            var current = ReverseList_2(head);
+            var newHead = current.next.next;
             current.next = null;
-            return newHead.next;
+            return newHead;
         }
 
-        public (ListNode newHead, ListNode current) ReverseList_2(ListNode head)
+        public ListNode ReverseList_2(ListNode head)
         {
-            if (head is not null)
+            if (head is null)
             {
-                var (newHead, current) = ReverseList_2(head.next);
-                current.next = head;
-                return (newHead, current.next);
+                return new();
             }
-            else
-            {
-                var temp = new ListNode();
-                return (temp, temp);
-            }
+
+            var current = ReverseList_2(head.next);
+            current.next = head;
+            return current.next;
         }
     }
 }
