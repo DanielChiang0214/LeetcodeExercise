@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace LeetcodeExercise
+﻿namespace LeetcodeExercise
 {
     internal class Sort_Colors
     {
@@ -14,11 +8,14 @@ namespace LeetcodeExercise
             {
                 return;
             }
-            for (int i = 0; i < nums.Length - 1; i++)
+            for (int j = 0; j < nums.Length; j++)
             {
-                if (nums[i] > nums[i + 1])
+                for (int i = j; i < nums.Length; i++)
                 {
-                    (nums[i], nums[i + 1]) = (nums[i + 1], nums[i]);
+                    if (nums[j] > nums[i])
+                    {
+                        (nums[j], nums[i]) = (nums[i], nums[j]);
+                    }
                 }
             }
         }
